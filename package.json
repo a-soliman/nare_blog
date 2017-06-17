@@ -12,6 +12,7 @@
     "debug": "~2.6.3",
     "express": "^4.15.3",
     "express-messages": "^1.0.1",
+    "express-session": "^1.15.3",
     "jade": "~1.11.0",
     "mongodb": "^2.2.29",
     "mongoose": "^4.10.8",
