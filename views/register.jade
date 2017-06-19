@@ -5,29 +5,45 @@ block content
     h2.page-header Register
     p Please register using the form below
 
-    form(method='post', action='/members/register', enctype='multipart/form-data')
+
+    form(method='post', action='/members/register')
         .form-group
             label Name
             input.form-control(name='name', type='text', placeholder='John')
+            if errors
+                each error, i in errors
+                    if(error.param == 'name')
+                        p.alert.alert-danger #{error.msg}
         
         .form-group
             label Email
             input.form-control(name='email', type='email', placeholder='John@mail.com')
-        
+            if errors
+                each error, i in errors
+                    if(error.param == 'email')
+                        p.alert.alert-danger #{error.msg}
+
         .form-group
             label Username
             input.form-control(name='username', type='text', placeholder='john')
+            if errors
+                each error, i in errors
+                    if(error.param == 'username')
+                        p.alert.alert-danger #{error.msg}
 
         .form-group
             label Password
             input.form-control(name='password', type='password', placeholder='Enter Password')
-
+            if errors
+                each error, i in errors
+                    if(error.param == 'password')
+                        p.alert.alert-danger #{error.msg}
         .form-group
             label Confirm Password
             input.form-control(name='password2', type='password', placeholder='Confirm Password')
-
-        .form-group
-            label Profile Image
-            input.form-control(name='profileimage', type='file')
+            if errors
+                each error, i in errors
+                    if(error.param == 'password2')
+                        p.alert.alert-danger #{error.msg}
 
         input.btn.btn-primary(type='submit', name='submit', value='Register')
