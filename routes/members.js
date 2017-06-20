@@ -23,13 +23,11 @@ router.get('/login', function(req, res, next) {
 // === using Passport to login
 
 router.post('/login',
-  passport.authenticate('local', {failurRedirect: '/users/login', failurFlash: 'Invalid username or password'}),
+  passport.authenticate('local', {failureRedirect: '/members/login', failureFlash: 'Invalid username or password'}),
   function(req, res) {
     
     req.flash('success', 'You are now logged in');
     res.redirect('/');
-
-    res.redirect('/users/' + req.user.username);
   });
 
 // == passport Serialize
@@ -43,7 +41,7 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
- // local stratigy 
+ // local strategy 
 passport.use(new localStrategy(function(username, password, done) {
   Member.getMemberByUsername(username, function(err, member) {
     if(err) throw err;
@@ -57,7 +55,7 @@ passport.use(new localStrategy(function(username, password, done) {
       if(isMatch) {
         return done(null, member);
       } else {
-        return done(null, flase, {message: 'Invalid Password'});
+        return done(null, false, {message: 'Invalid Password'});
       }
 
     })
@@ -104,7 +102,7 @@ router.post('/register', function(req, res, next) {
     req.flash('success', 'You are now registed and can Login!')
 
     res.location('/');
-    res.redirect('/')
+    res.redirect('/');
   }
 });
 
