@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+var Member = require('../models/member');
+
 
 /* GET Members listing. */
 router.get('/', function(req, res, next) {
@@ -38,7 +40,22 @@ router.post('/register', function(req, res, next) {
       errors: errors
     })
   } else {
-    console.log('Good To Go')
+    var newMember = new Member({
+      name: name,
+      email: email,
+      username: username,
+      password: password
+    });
+
+    Member.createMember(newMember, function(err, member) {
+      if(err) throw err;
+      console.log(member)
+    });
+
+    req.flash('success', 'You are now registed and can Login!')
+
+    res.location('/');
+    res.redirect('/')
   }
 });
 
