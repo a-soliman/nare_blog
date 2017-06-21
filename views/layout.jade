@@ -17,17 +17,24 @@ html(lang='en')
         .navbar-collapse.collapse
           ul.nav.navbar-nav
             li(class=(title == 'Home' ? 'active' : ''))
-              a(href='/') Home
-
-            li(class=(title == 'Register' ? 'active' : ''))
-              a(href='/members/register') Register
-            
-            li(class=(title == 'Login' ? 'active' : ''))
-              a(href='/members/login') Login
-
+              a(href='/') Posts
+            if !user
+              li(class=(title == 'Register' ? 'active' : ''))
+                a(href='/members/register') Register
+              
+              li(class=(title == 'Login' ? 'active' : ''))
+                a(href='/members/login') Login
+          
           ul.nav.navbar-nav.navbar-right
-            li
-              a(href='/members/logout') LogOut
+            if user
+              li(class='dropdown')
+                a(class='dropdown-toggle', data-toggle="dropdown" ) #{user.name} 
+                  span(class='caret')
+
+                
+                ul(class='dropdown-menu')
+                  li
+                    a(href='/members/logout') Logout
     .container
       != messages()
       block content
