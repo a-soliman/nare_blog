@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var bcrypt = require('bcryptjs');
 
 mongoose.connect('mongodb://localhost/nare_blog');
 
@@ -24,5 +25,11 @@ var MemberSchema = mongoose.Schema({
 var Member = module.exports = mongoose.model('Member', MemberSchema);
 
 module.exports.createMember = function(newMember, callback) {
-    newMember.save(callback);
+    bcrypt.genSalt(10, function(err, salt) {
+        bcrypt.hash(newMember.password, salt, function(err, hash) {
+            // Store hash in your password DB. 
+            newMember.password = hash;
+            newMember.save(callback);
+        });
+    });
 }
