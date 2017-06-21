@@ -72,7 +72,11 @@ app.use(function (req, res, next) {
   next();
 });
 
-
+// global variable to showcase if a member is logged in
+app.get('*', function(req, res, next) {
+  res.locals.member = req.member || null;
+  next();
+})
 
 app.use('/', index);
 app.use('/members', members);
