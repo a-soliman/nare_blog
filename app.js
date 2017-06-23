@@ -20,6 +20,9 @@ var members = require('./routes/members');
 
 var app = express();
 
+// handeling moment JS globally 
+app.locals.moment = require('moment')
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -77,6 +80,7 @@ app.get('*', function(req, res, next) {
   res.locals.user = req.user || null;
   next();
 })
+
 
 app.use('/', index);
 app.use('/members', members);
