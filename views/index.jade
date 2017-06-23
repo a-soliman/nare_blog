@@ -3,3 +3,13 @@ extends layout
 block content
   h1 Mambers Area
   p Welcome to my Blog
+
+  if posts
+    each post, i in posts
+      .post
+        h1
+          a(href='/posts/show/#{post._id}')
+            =post.title
+        p.meta Posted in #{post.category} category, on #{moment(post.date).format("MM-DD-YYYY")}
+        p.body #{post.body} 
+        a.more(href='/posts/show/#{post._id}') Read More
