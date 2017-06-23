@@ -113,4 +113,6 @@ router.get('/logout', function(req, res) {
   res.redirect('/members/login')
 })
 
+
+
 module.exports = router;
