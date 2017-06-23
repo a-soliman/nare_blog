@@ -33,6 +33,9 @@ html(lang='en')
 
                 
                 ul(class='dropdown-menu')
+                  if user.isAdmin
+                    li
+                      a(href='#') Admin
                   li
                     a(href='/members/logout') Logout
     .container
@@ -40,5 +43,7 @@ html(lang='en')
       block content
 
 
+
+
     script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
-    script(src='javascripts/bootstrap.min.js')
+    script(src='/javascripts/bootstrap.min.js')
