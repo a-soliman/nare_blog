@@ -25,6 +25,7 @@ html(lang='en')
               li(class=(title == 'Login' ? 'active' : ''))
                 a(href='/members/login') Login
           
+
           ul.nav.navbar-nav.navbar-right
             if user
               li(class='dropdown')
@@ -34,8 +35,14 @@ html(lang='en')
                 
                 ul(class='dropdown-menu')
                   if user.isAdmin
-                    li
-                      a(href='#') Admin
+                    if !status
+                      li(class='dropdown')
+                        a(href='/admin') Admin
+  
+                    if status == 'Admin'
+                      li
+                        a(href='/') Front-End
+                  
                   li
                     a(href='/members/logout') Logout
     .container
