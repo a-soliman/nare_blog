@@ -17,9 +17,16 @@ var PostSchema = mongoose.Schema({
     },
     date: {
         type: String
+    },
+    mainimage: {
+        type: String
     }
 
 });
 
 var Post = module.exports = mongoose.model('Post', PostSchema);
+
+module.exports.createPost = function(newPost, callback) {
+    newPost.save(callback);
+}
 
