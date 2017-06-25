@@ -5,7 +5,7 @@ block content
     
     h2.page-header AddPost
 
-    form(method='post', action="/admin/addPost", enctype='.......')
+    form(method='post', action="/admin/add_post", enctype='multipart/form-data')
         .form-group
             label Title
             input.form-control(name='title', type='text', placeholder='title')
@@ -16,11 +16,11 @@ block content
         
         .form-group
             label Category
-            select 
+            select.form-control(name='category') 
 
         .form-group
             label Body
-            textarea.form-control(name='body', rows='5' placeholder='story')
+            textarea.form-control(name='body', rows='5' placeholder='story' id='body')
             if errors
                 each error, i in errors
                     if(error.param == 'body')
@@ -34,8 +34,8 @@ block content
                     if(error.param == 'date')
                         p.alert.alert-danger #{error.msg}
         .form-group
-            label Image
-            input.form-control(name='image', type='file')
+            label Main Image
+            input.form-control(name='mainimage', type='file')
             if errors
                 each error, i in errors
                     if(error.param == 'image')
