@@ -27,7 +27,7 @@ router.post('/login',
   function(req, res) {
     
     req.flash('success', 'You are now logged in');
-    res.redirect('/');
+    res.redirect('/posts');
   });
 
 // == passport Serialize
