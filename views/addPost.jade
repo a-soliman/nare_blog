@@ -17,6 +17,11 @@ block content
         .form-group
             label Category
             select.form-control(name='category') 
+                if categories
+                    each category, i in categories
+                        option(value='#{category.name}') #{category.name}
+                else 
+                    option(value='') No Categories in database
 
         .form-group
             label Body
