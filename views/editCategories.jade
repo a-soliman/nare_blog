@@ -4,3 +4,10 @@ block content
     
     
     h2.page-header View / Edit Categories
+
+    ul.categories-list
+        if categories
+            each category, i in categories
+                li 
+                    h2 #{category.name}
+    
