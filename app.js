@@ -22,7 +22,13 @@ var admin = require('./routes/admin');
 var app = express();
 
 // handeling moment JS globally 
-app.locals.moment = require('moment')
+app.locals.moment = require('moment');
+
+// global method to trunc the text of the posts's body
+app.locals.truncateText = function(text, length) {
+  var truncatedText = text.substring(0, length);
+  return truncatedText;
+} 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
