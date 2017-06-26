@@ -4,6 +4,7 @@ var multer = require('multer');
 var upload = multer({dest: 'uploads'});
 
 var Post = require('../models/post');
+var Category = require('../models/category');
 
 //rendering the admin page 
 router.get('/', function(req, res, next) {
@@ -11,7 +12,13 @@ router.get('/', function(req, res, next) {
 })
 
 router.get('/addPost', function(req, res, next) {
-    res.render('addPost', {status: 'Admin'});
+    //get categories from db to render them in a select elemnt
+    
+    var categories = Category;
+    
+    categories.find({}, {}, function(err, categories) {
+        res.render('addPost', {status: 'Admin', categories: categories});
+    })
 })
 
 router.get('/editPosts', function(req, res, next) {
@@ -23,7 +30,13 @@ router.get('/addCategory', function(req, res, next) {
 })
 
 router.get('/editCategories', function(req, res, next) {
-    res.render('editCategories', {status: 'Admin'});
+
+    var categories = Category;
+
+    categories.find({}, {}, function(err, categories) {
+        res.render('editCategories', {status: 'Admin', categories: categories});
+    })
+    
 })
 
 // == post request to add to the posts in the database
@@ -66,6 +79,37 @@ router.post('/add_post', upload.single('mainimage'), function(req, res, next) {
         });
 
         req.flash('success', 'Post Added.');
+        res.location('/admin');
+        res.redirect('/admin');
+    }
+})
+
+// == post request to add Category to the database
+router.post('/addCategory', function(req, res, next) {
+    //get the form values
+    var name = req.body.name;
+
+    //form validation
+    req.checkBody('name', ' Name field is required.').notEmpty();
+    
+    //check errors
+    var errors = req.validationErrors();
+
+    if(errors) {
+        res.render('addCategory', {
+            status: 'Admin',
+            errors: errors
+        });
+    } else {
+        var newCategory = new Category({
+            name: name
+        });
+
+        Category.createCategory(newCategory, function(err, category) {
+            if(err) throw err;
+        });
+
+        req.flash('success', 'Category Added.');
         res.location('/admin');
         res.redirect('/admin');
     }
