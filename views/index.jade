@@ -11,5 +11,7 @@ block content
           a(href='/posts/show/#{post._id}')
             =post.title
         p.meta Posted in #{post.category} category, on #{moment(post.date).format("MM-DD-YYYY")}
-        p.body #{post.body} 
+        img(href='')
+        p.body 
+          !=post.body 
         a.more(href='/posts/show/#{post._id}') Read More
