@@ -8,10 +8,12 @@ block content
     each post, i in posts
       .post
         h1
-          a(href='/posts/show/#{post._id}')
+          a(href='/posts/post/#{post._id}')
             =post.title
-        p.meta Posted in #{post.category} category, on #{moment(post.date).format("MM-DD-YYYY")}
+        p.meta Posted in 
+          a(href='/posts/show/#{post.category}') #{post.category}
+          | , on #{moment(post.date).format("MM-DD-YYYY")}
         img(src='/images/#{post.mainimage}')
         p.body 
           !=truncateText(post.body, 500)
-        a.more(href='/posts/show/#{post._id}') Read More
+        a.more(href='/posts/post/#{post._id}') Read More
