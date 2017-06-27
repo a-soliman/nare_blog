@@ -16,8 +16,8 @@ html(lang='en')
           a.navbar-brand(href='#') Nare Blog
         .navbar-collapse.collapse
           ul.nav.navbar-nav
-            li(class=(title == 'Home' ? 'active' : ''))
-              a(href='/') Posts
+            li(class=(title == 'Posts' ? 'active' : ''))
+              a(href='/posts') Posts
             if !user
               li(class=(title == 'Register' ? 'active' : ''))
                 a(href='/members/register') Register
@@ -41,7 +41,7 @@ html(lang='en')
   
                     if status == 'Admin'
                       li
-                        a(href='/') Front-End
+                        a(href='/posts') Front-End
                   
                   li
                     a(href='/members/logout') Logout
