@@ -9,3 +9,29 @@ block content
         img(src='/images/#{post.mainimage}')
         p.body 
             !=post.body
+        br
+        hr
+
+        if post.comments
+            h3 Comments: 
+            each comment, i in post.comments
+                .comment
+                    p.comment-name #{comment.name} 
+                        span.comment-date on #{moment(comment.commentdate).format("MM-DD-YYYY, h:mm:ss a")} 
+                    p.comment-body #{comment.body}
+                    
+        
+            
+
+        h3 Add Comment
+        form.comment-form(method='post', action='/posts/addcomment')
+            input(name='postid', type='hidden', value='#{post._id}')
+            input(name='name', type='hidden', value='#{user.username}')
+            input(name='email', type='hidden', value='#{user.email}')
+
+            .form-group
+                label Comment
+                textarea.form-control(name='body', rows=3)
+            br
+
+            input.btn.btn-default(type='submit', name='submit', value='Add Comment')
