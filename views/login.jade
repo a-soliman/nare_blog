@@ -4,15 +4,16 @@ block content
 
     h2.page-header Login
     p Please login using the form below
+    .col-md-6
+        .form-container
+            form(method='post', action='/members/login')
+                .form-group
+                    label Username
+                    input.form-control(name='username', type='text', placeholder='john')
 
-    form(method='post', action='/members/login')
-        .form-group
-            label Username
-            input.form-control(name='username', type='text', placeholder='john')
-
-        .form-group
-            label Password
-            input.form-control(name='password', type='password', placeholder='Enter Password')
+                .form-group
+                    label Password
+                    input.form-control(name='password', type='password', placeholder='Enter Password')
 
 
-        input.btn.btn-primary(type='submit', name='submit', value='Login')
+                input.btn.button(type='submit', name='submit', value='Login')
