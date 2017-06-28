@@ -21,17 +21,22 @@ block content
                     p.comment-body #{comment.body}
                     
         
-            
+        
+        h3 Add Comment   
+        if user
+            .col-md-6
+                .form-container
+                    form.comment-form(method='post', action='/posts/addcomment')
+                        input(name='postid', type='hidden', value='#{post._id}')
+                        input(name='name', type='hidden', value='#{user.username}')
+                        input(name='email', type='hidden', value='#{user.email}')
 
-        h3 Add Comment
-        form.comment-form(method='post', action='/posts/addcomment')
-            input(name='postid', type='hidden', value='#{post._id}')
-            input(name='name', type='hidden', value='#{user.username}')
-            input(name='email', type='hidden', value='#{user.email}')
+                        .form-group
+                            label Comment
+                            textarea.form-control(name='body', rows=3)
+                        br
 
-            .form-group
-                label Comment
-                textarea.form-control(name='body', rows=3)
-            br
-
-            input.btn.btn-default(type='submit', name='submit', value='Add Comment')
+                        input.btn.button(type='submit', name='submit', value='Add Comment')
+        else 
+                p 
+                    a(href='/members/login') Login in order to comment
