@@ -2,20 +2,21 @@ doctype html
 html(lang='en')
   head
     title Nare Photogaraphy Blog
+    <link href="https://fonts.googleapis.com/css?family=Italianno|Raleway:500|Rokkitt" rel="stylesheet">
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    .navbar.navbar-default(role='navigation')
-      .container
-        .navbar-header
-          button.navbar-toggle(type='button', data-toggle='collapse', data-target='navbar-collapse')
-            span.sr-only Toggle navigation
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a.navbar-brand(href='#') Nare Blog
+    
+    .container
+      header
+        .text-center
+          span WELCOME
+          h2 Nare Photogaraphy
+          span BLOG
+    .container.container-nav
+      .navbar.navbar-default.navbar-border(role='navigation')
         .navbar-collapse.collapse
-          ul.nav.navbar-nav
+          ul.nav.navbar-nav.navbar-middle(class=(!user ? 'wide-nav' : ''))
             li(class=(title == 'Posts' ? 'active' : ''))
               a(href='/posts') Posts
             if !user
@@ -24,6 +25,10 @@ html(lang='en')
               
               li(class=(title == 'Login' ? 'active' : ''))
                 a(href='/members/login') Login
+              
+              if !user
+                li
+                  a(href='http://www.narephoto.com', target='_blank') Website
           
 
           ul.nav.navbar-nav.navbar-right
@@ -45,9 +50,25 @@ html(lang='en')
                   
                   li
                     a(href='/members/logout') Logout
-    .container
+    .container.main-container
       != messages()
+      .intro
+        img(src='/images/intro_bg.jpg', alt='intro background')
+        .intro-text
+          h3  Lorem ipsum dolor sit amet, consectetur adipisicing elit
+          p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam ut, hic pariatur modi facere rerum totam maxime.
       block content
+
+    footer.text-center
+      img.logo(src='/images/logo.png')
+      hr
+      p
+        span 13001 Vanowen street
+        span North Hollywood, CA 
+        span tel: 954.614.3334
+        span &copy; 2017 NARE PHOTOGRAPHY
+        span  
+          a(href='http://www.a-soliman.com', target='_blank') SITE BY A.SOLIMAN
 
 
 
