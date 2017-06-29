@@ -28,7 +28,7 @@ app.locals.moment = require('moment');
 // global method to trunc the text of the posts's body
 app.locals.truncateText = function(text, length) {
   var truncatedText = text.substring(0, length);
-  return truncatedText;
+  return truncatedText + '...';
 } 
 
 // view engine setup
