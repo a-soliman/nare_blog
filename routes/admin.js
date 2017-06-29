@@ -5,6 +5,7 @@ var upload = multer({dest: './public/images'});
 
 var Post = require('../models/post');
 var Category = require('../models/category');
+var Member = require('../models/member');
 
 //rendering the admin page 
 router.get('/', function(req, res, next) {
@@ -22,7 +23,10 @@ router.get('/addPost', function(req, res, next) {
 })
 
 router.get('/editPosts', function(req, res, next) {
-    res.render('editPosts', {status: 'Admin'});
+    var posts = Post;
+    posts.find({}, {} , function(err, posts) {
+        res.render('editPosts', {status: 'Admin', posts: posts});
+    })
 })
 
 router.get('/addCategory', function(req, res, next) {
@@ -35,6 +39,16 @@ router.get('/editCategories', function(req, res, next) {
 
     categories.find({}, {}, function(err, categories) {
         res.render('editCategories', {status: 'Admin', categories: categories});
+    })
+    
+})
+
+router.get('/manageMembers', function(req, res, next) {
+
+    var members = Member;
+
+    members.find({}, {}, function(err, members) {
+        res.render('manageMembers', {status: 'Admin', members: members});
     })
     
 })
