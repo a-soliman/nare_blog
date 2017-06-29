@@ -71,6 +71,7 @@ ul.wide-nav {
 header {
   color: #fff; }
   header h2 {
+    color: #d3b680;
     margin: 0;
     font-family: serif;
     text-transform: uppercase;
@@ -110,6 +111,12 @@ header {
   margin-top: 30px; }
   .post img {
     width: 100%; }
+  .post .cardImg {
+    max-height: 313px; }
+  .post .post-text {
+    padding: 0 15px 20px 15px;
+    border-right: 3px solid transparent;
+    border-bottom: 2px solid transparent; }
   .post h2 {
     font-family: "Raleway", sans-serif; }
   .post .meta {
@@ -131,6 +138,36 @@ header {
     margin-bottom: 30px; }
 
 /*! ==== END POST ==== */
+/*! ==== COMMENT ==== */
+.comments-container {
+  text-align: left; }
+  .comments-container h3 {
+    color: #d3b680; }
+  .comments-container .comment {
+    padding: 10px; }
+    .comments-container .comment .comment-name {
+      font-weight: bold;
+      font-size: 18px;
+      letter-spacing: 3px; }
+    .comments-container .comment .comment-date {
+      font-weight: normal;
+      letter-spacing: 0; }
+    .comments-container .comment .comment-body {
+      margin-left: 22px;
+      background-color: beige;
+      padding: 5px 10px;
+      display: inline-block;
+      width: 322px;
+      border-radius: 5px; }
+    .comments-container .comment hr {
+      border: 1px solid #d3b680;
+      display: inline-block;
+      width: 358px; }
+  .comments-container .comment:last-child hr {
+    display: block;
+    width: 100%; }
+
+/*! ==== END COMMENT ==== */
 /*! ==== FOOTER ==== */
 footer {
   text-transform: uppercase;
@@ -146,5 +183,7 @@ footer {
     color: white; }
     footer a:hover {
       color: #d3b680; }
+  footer .gold:first-letter {
+    color: #d3b680; }
 
 /*! ==== END FOOTER ==== */

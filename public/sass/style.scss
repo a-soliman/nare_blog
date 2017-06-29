@@ -98,6 +98,7 @@ header {
     color: $white;
 
     & h2 {
+        color: $gold;
         margin: 0;
         font-family: serif;
         text-transform: uppercase;
@@ -152,6 +153,16 @@ header {
         width: 100%;
     }
 
+    & .cardImg {
+        max-height: 313px;
+    }
+
+    & .post-text {
+        padding: 0 15px 20px 15px;
+        border-right: 3px solid transparent;
+        border-bottom: 2px solid transparent;
+    }
+
     & h2 {
         font-family: $post-title-font;
     }
@@ -186,6 +197,50 @@ header {
 
 /*! ==== END POST ==== */
 
+/*! ==== COMMENT ==== */
+.comments-container {
+    text-align: left;
+
+    & h3 {
+        color: $gold;
+    }
+
+    & .comment {
+        padding: 10px;
+       
+        & .comment-name {
+            font-weight: bold;
+            font-size: 18px;
+            letter-spacing: 3px;
+        }
+
+        & .comment-date {
+            font-weight: normal;
+            letter-spacing: 0;
+        }
+
+        & .comment-body {
+            margin-left: 22px;
+            background-color: $beige;
+            padding: 5px 10px;
+            display: inline-block;
+            width: 322px;
+            border-radius: 5px;
+        }
+
+        & hr {
+            border: 1px solid $gold;
+            display: inline-block;
+            width: 358px;;
+        }
+    }
+
+    & .comment:last-child hr {
+        display: block;
+        width: 100%;
+    }
+}
+/*! ==== END COMMENT ==== */
 
 /*! ==== FOOTER ==== */
 footer {
@@ -211,6 +266,9 @@ footer {
         &:hover {
             color: $gold;
         }
+    }
+    & .gold:first-letter {
+        color: $gold;
     }
 }
 
