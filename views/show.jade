@@ -13,18 +13,23 @@ block content
         hr
 
         if post.comments
-            h3 Comments: 
-            each comment, i in post.comments
-                .comment
-                    p.comment-name #{comment.name} 
-                        span.comment-date on #{moment(comment.commentdate).format("MM-DD-YYYY, h:mm:ss a")} 
-                    p.comment-body #{comment.body}
+            .col-xs-12
+                .comments-container
+                    h3 Comments: 
+                    each comment, i in post.comments
+                    
+                        .comment
+                            p.comment-name #{comment.name}: 
+                                span.comment-date on #{moment(comment.commentdate).format("MM-DD-YYYY, h:mm:ss a")} 
+                            p.comment-body #{comment.body}
+                            br
+                            hr
                     
         
         
         h3 Add Comment   
         if user
-            .col-md-6
+            .col-md-12
                 .form-container
                     form.comment-form(method='post', action='/posts/addcomment')
                         input(name='postid', type='hidden', value='#{post._id}')
